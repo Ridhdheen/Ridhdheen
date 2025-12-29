@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c34;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+        #clock-container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #61dafb;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        #clock {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        #date {
+            font-size: 1.2rem;
+            color: #61dafb;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
 
+    <div id="clock-container">
+        <div id="clock">00:00:00</div>
+        <div id="date">Loading date...</div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            const dateOptions = {  month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString(undefined, dateOptions);
+            document.getElementById('clock').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>
