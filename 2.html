@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    
+</head>
+<body>
+
+    <div class="container">
+        <h3>Message Editor</h3>
+        <textarea id="message-box" maxlength="100" placeholder="Start typing..."></textarea>
+        
+        <div class="counter-container">
+            Characters remaining: <span id="char-count">100</span>
+        </div>
+    </div>
+
+    <script>
+        const textArea = document.getElementById('message-box');
+        const charCountDisplay = document.getElementById('char-count');
+        const maxChars = textArea.getAttribute('maxlength');
+        textArea.addEventListener('input', () => {
+            const currentLength = textArea.value.length;
+            const remaining = maxChars - currentLength;
+            charCountDisplay.textContent = remaining;
+            
+        });
+    </script>
+
+</body>
+</html>
